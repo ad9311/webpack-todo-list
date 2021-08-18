@@ -6,8 +6,12 @@ module.exports = {
   mode: 'development',
   entry: {
     import: './src/list.js',
-    import: './src/task.js',
+    import: './src/element.js',
     index: './src/index.js',
+  },
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
@@ -25,9 +29,5 @@ module.exports = {
       template: './src/index.html',
     }),
   ],
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
 };
 /* eslint-enable */

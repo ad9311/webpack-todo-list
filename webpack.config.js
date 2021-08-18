@@ -5,6 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
+    import: './src/list.js',
+    import: './src/task.js',
     index: './src/index.js',
   },
   module: {

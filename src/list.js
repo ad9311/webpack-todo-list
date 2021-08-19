@@ -9,5 +9,13 @@ class List {
     this.list.push({description: description, completed: false, index: this.lastIndex});
     return this.list;
   }
+
+  setCompleted(index, completed) {
+    if(completed) {
+      this.list[Number(index)].completed = true;
+    } else {
+      this.list[Number(index)].completed = false;
+    }
+  }
 }
 export const list = new List();

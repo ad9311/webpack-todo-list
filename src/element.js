@@ -11,10 +11,21 @@ class Element {
   createListTask(task) {
     this.setUpElements();
     this.input.id = `task${task.index}`;
+    this.label.id = `desc${task.index}`;
     this.label.innerHTML = task.description;
+    this.li.id = `list${task.index}`;
     this.li.appendChild(this.input);
     this.li.appendChild(this.label);
+    this.li.appendChild(this.svg);
     return this.li;
+  }
+  updateDescription(id, completed) {
+    this.label = document.getElementById(id);
+    if(completed) {
+      this.label.classList = 'flex-grow-1 text-decoration-line-through';
+    } else {
+      this.label.classList = 'flex-grow-1';
+    }
   }
 }
 

@@ -10,8 +10,8 @@ module.exports = {
     index: './src/index.js',
   },
   output: {
+    path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
@@ -27,6 +27,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      inject: false,
     }),
   ],
 };

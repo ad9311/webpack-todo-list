@@ -2,26 +2,26 @@ import './style.css';
 import list from './list.js';
 import element from './element.js';
 
-list.addNewTask('Walk dog');
-list.addNewTask('Clean kitchen');
-list.addNewTask('Pay bills');
-list.addNewTask('Water plants');
-list.addNewTask('Buy food');
-
 const updateLocalStorage = () => {
   localStorage.setItem('list', JSON.stringify(list.list));
 };
 
-const renderList = () => {
+const renderStorage = () => {
   if (localStorage.getItem('list')) {
     list.list = JSON.parse(localStorage.getItem('list'));
+    console.log(list.list);
+    for (let i = 0; i < list.list.length; i += 1) {
+      const ul = document.getElementById('task-list');
+      ul.appendChild(element.createListTask(list.list[i]));
+    }
   }
-  for (let i = 0; i < list.list.length; i += 1) {
-    const ul = document.getElementById('task-list');
-    ul.appendChild(element.createListTask(list.list[i]));
-  }
-  updateLocalStorage();
 };
+
+const renderNewTask = () => {
+  const ul = document.getElementById('task-list');
+  ul.appendChild(element.createListTask(list.list[list.lastIndex]));
+  updateLocalStorage();
+}
 
 const updateTask = (e) => {
   if (e.target !== e.currentTarget) {
@@ -33,6 +33,15 @@ const updateTask = (e) => {
   }
 };
 
-window.addEventListener('load', renderList(), false);
+const addTaskToList = (e) => {
+  if (e.key === 'Enter') {
+    const input = document.getElementById('add-task');
+    list.addNewTask(input.value);
+    input.value = '';
+    renderNewTask();
+  }
+}
 
-document.querySelector('#task-list').addEventListener('change', updateTask, false);
+window.addEventListener('load', renderStorage(), false);
+document.getElementById('task-list').addEventListener('change', updateTask, false);
+document.getElementById('add-task').addEventListener('keypress', addTaskToList, false);

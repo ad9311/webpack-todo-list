@@ -38,5 +38,4 @@ class Element {
 }
 
 const element = new Element();
-
 export default element;

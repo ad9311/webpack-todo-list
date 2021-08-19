@@ -1,11 +1,10 @@
 class List {
   constructor() {
-    this.lastIndex = -1;
     this.list = [];
   }
 
   addNewTask(description) {
-    this.lastIndex += 1;
+    this.lastIndex = this.list.length; 
     this.list.push({ description, completed: false, index: this.lastIndex });
     return this.list;
   }

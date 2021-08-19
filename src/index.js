@@ -21,6 +21,16 @@ const addTaskToList = (event) => {
   }
 };
 
+const focusOnTask = (event) => {
+  if(event.target === document.activeElement) {
+    manager.focusOnList(event, element);
+  } else {
+    manager.unfocusOnList(event, element);
+  }
+}
+
 window.addEventListener('load', manager.renderStorage(list, element), false);
 document.getElementById('task-list').addEventListener('change', updateTask, false);
+document.getElementById('task-list').addEventListener('focusin', focusOnTask, false);
+document.getElementById('task-list').addEventListener('focusout', focusOnTask, false);
 document.getElementById('add-task').addEventListener('keypress', addTaskToList, false);

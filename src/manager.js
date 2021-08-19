@@ -32,6 +32,16 @@ class Manager {
     list.editDescription(index, event.target.value);
     this.updateLocalStorage(list);
   };
+
+  focusOnList = (event, element) => {
+    const index = event.target.id.replace(/^\D+/g, '');
+    element.changeListBackground(index);
+  }
+
+  unfocusOnList = (event, element) => {
+    const index = event.target.id.replace(/^\D+/g, '');
+    element.defaultListBackground(index);
+  }
 }
 
 const manager = new Manager();

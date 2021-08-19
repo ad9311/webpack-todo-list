@@ -12,6 +12,7 @@ li {
 input {
   outline: none;
   border: hidden;
+  background-color: transparent;
 }
 
 .small-container {
@@ -30,6 +31,10 @@ input {
 .svg {
   fill: lightgray;
   cursor: pointer;
+}
+
+.focused-task {
+  background-color: blanchedalmond;
 }
 
 .clear {

@@ -4,7 +4,7 @@ class List {
   }
 
   addNewTask(description) {
-    this.lastIndex = this.list.length; 
+    this.lastIndex = this.list.length;
     this.list.push({ description, completed: false, index: this.lastIndex });
     return this.list;
   }

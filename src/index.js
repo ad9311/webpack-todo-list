@@ -8,11 +8,11 @@ list.addNewTask('Pay bills');
 list.addNewTask('Water plants');
 list.addNewTask('Buy food');
 
-function updateLocalStorage() {
+const updateLocalStorage = () => {
   localStorage.setItem('list', JSON.stringify(list.list));
-}
+};
 
-function renderList() {
+const renderList = () => {
   if (localStorage.getItem('list')) {
     list.list = JSON.parse(localStorage.getItem('list'));
   }
@@ -21,9 +21,9 @@ function renderList() {
     ul.appendChild(element.createListTask(list.list[i]));
   }
   updateLocalStorage();
-}
+};
 
-function updateTask(e) {
+const updateTask = (e) => {
   if (e.target !== e.currentTarget) {
     const index = e.target.id.replace(/^\D+/g, '');
     const completed = e.target.checked;
@@ -31,7 +31,7 @@ function updateTask(e) {
     element.updateDescription(`desc${index}`, completed);
     updateLocalStorage();
   }
-}
+};
 
 window.addEventListener('load', renderList(), false);
 

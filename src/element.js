@@ -7,7 +7,10 @@ class Element {
     this.input.classList = 'me-2';
     this.label = document.createElement('label');
     this.label.classList = 'flex-grow-1';
+    this.svg = document.createElement('div');
+    this.svg.innerHTML = '<svg class="svg" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path d="M12 18c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z"/></svg>';
   }
+
   createListTask(task) {
     this.setUpElements();
     this.input.id = `task${task.index}`;
@@ -19,9 +22,10 @@ class Element {
     this.li.appendChild(this.svg);
     return this.li;
   }
+
   updateDescription(id, completed) {
     this.label = document.getElementById(id);
-    if(completed) {
+    if (completed) {
       this.label.classList = 'flex-grow-1 text-decoration-line-through';
     } else {
       this.label.classList = 'flex-grow-1';
@@ -29,4 +33,6 @@ class Element {
   }
 }
 
-export const element = new Element();
+const element = new Element();
+
+export default element;

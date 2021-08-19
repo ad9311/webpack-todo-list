@@ -1,4 +1,9 @@
 class Manager {
+  getIndex = (event) => {
+    this.currentIndex = event.target.id.replace(/^\D+/g, '');
+    return this.currentIndex;
+  };
+
   updateLocalStorage = (list) => {
     localStorage.setItem('list', JSON.stringify(list.list));
   };
@@ -40,7 +45,7 @@ class Manager {
 
   unfocusOnList = (event, element) => {
     const index = event.target.id.replace(/^\D+/g, '');
-    element.defaultListBackground(index);
+    window.setTimeout(() => { element.defaultListBackground(index); }, 200);
   }
 }
 

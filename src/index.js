@@ -6,9 +6,8 @@ import manager from './manager.js';
 const updateTask = (event) => {
   if (event.target.id.includes('task')) {
     manager.updateTask(event, list, element);
-  } else if(event.target.id.includes('desc')) {
+  } else if (event.target.id.includes('desc')) {
     manager.updateTaskDescription(event, list);
-    console.log(list.list);
   }
 };
 
@@ -21,13 +20,22 @@ const addTaskToList = (event) => {
   }
 };
 
+const removeTask = () => {
+  const task = document.getElementById(`list${manager.currentIndex}`);
+  list.removeTaskFromList(manager.currentIndex);
+  manager.updateLocalStorage(list);
+  document.getElementById('task-list').removeChild(task);
+};
+
 const focusOnTask = (event) => {
-  if(event.target === document.activeElement) {
+  const index = manager.getIndex(event);
+  if (event.target === document.activeElement) {
     manager.focusOnList(event, element);
+    document.getElementById(`bin${index}`).addEventListener('click', removeTask, false);
   } else {
     manager.unfocusOnList(event, element);
   }
-}
+};
 
 window.addEventListener('load', manager.renderStorage(list, element), false);
 document.getElementById('task-list').addEventListener('change', updateTask, false);

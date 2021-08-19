@@ -20,6 +20,10 @@ class List {
   editDescription(index, newDescription) {
     this.list[Number(index)].description = newDescription;
   }
+
+  removeTaskFromList(index) {
+    this.list = this.list.filter((task) => task.index !== Number(index));
+  }
 }
 
 const list = new List();

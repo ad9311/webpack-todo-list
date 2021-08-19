@@ -1,4 +1,41 @@
 /* CSS Stylesheet */
-.hello {
-  color: red;
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+input {
+  outline: none;
+}
+
+.small-container {
+  margin: 100px auto auto auto;
+  max-width: 500px;
+}
+
+.list-row {
+  padding: 0 10px 0 10px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(233, 233, 233);
+}
+
+.svg {
+  fill: lightgray;
+  cursor: pointer;
+}
+
+.clear {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #f6f6f6;
+  color: lightgray;
 }

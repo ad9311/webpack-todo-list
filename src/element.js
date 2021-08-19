@@ -17,6 +17,10 @@ class Element {
     this.label.id = `desc${task.index}`;
     this.label.innerHTML = task.description;
     this.li.id = `list${task.index}`;
+    if (task.completed) {
+      this.input.checked = true;
+      this.label.classList = 'flex-grow-1 text-decoration-line-through';
+    }
     this.li.appendChild(this.input);
     this.li.appendChild(this.label);
     this.li.appendChild(this.svg);

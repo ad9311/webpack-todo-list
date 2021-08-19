@@ -23,7 +23,13 @@ class Manager {
     const index = event.target.id.replace(/^\D+/g, '');
     const completed = event.target.checked;
     list.setCompleted(index, completed);
-    element.updateDescription(`desc${index}`, completed);
+    element.crossOutDescription(`desc${index}`, completed);
+    this.updateLocalStorage(list);
+  };
+
+  updateTaskDescription = (event, list) => {
+    const index = event.target.id.replace(/^\D+/g, '');
+    list.editDescription(index, event.target.value);
     this.updateLocalStorage(list);
   };
 }

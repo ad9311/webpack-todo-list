@@ -16,6 +16,10 @@ class List {
       this.list[Number(index)].completed = false;
     }
   }
+
+  editDescription(index, newDescription) {
+    this.list[Number(index)].description = newDescription;
+  }
 }
 
 const list = new List();

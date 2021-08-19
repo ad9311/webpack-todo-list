@@ -4,8 +4,11 @@ import element from './element.js';
 import manager from './manager.js';
 
 const updateTask = (event) => {
-  if (event.target !== event.currentTarget) {
+  if (event.target.id.includes('task')) {
     manager.updateTask(event, list, element);
+  } else if(event.target.id.includes('desc')) {
+    manager.updateTaskDescription(event, list);
+    console.log(list.list);
   }
 };
 

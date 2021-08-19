@@ -11,6 +11,7 @@ li {
 
 input {
   outline: none;
+  border: hidden;
 }
 
 .small-container {

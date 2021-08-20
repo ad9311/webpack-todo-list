@@ -61,6 +61,10 @@ class Element {
       this.svg.innerHTML = this.getSVG(false);
     }
   }
+
+  clearUl = () => {
+    document.getElementById('task-list').innerHTML = '';
+  }
 }
 
 const element = new Element();

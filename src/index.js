@@ -21,10 +21,10 @@ const addTaskToList = (event) => {
 };
 
 const removeTask = () => {
-  const task = document.getElementById(`list${manager.currentIndex}`);
+  element.clearUl();
   list.removeTaskFromList(manager.currentIndex);
   manager.updateLocalStorage(list);
-  document.getElementById('task-list').removeChild(task);
+  manager.renderStorage(list, element);
 };
 
 const focusOnTask = (event) => {
@@ -37,8 +37,16 @@ const focusOnTask = (event) => {
   }
 };
 
+const clearList = () => {
+  element.clearUl();
+  list.removeCompletedTasks();
+  manager.updateLocalStorage(list);
+  manager.renderStorage(list, element);
+};
+
 window.addEventListener('load', manager.renderStorage(list, element), false);
 document.getElementById('task-list').addEventListener('change', updateTask, false);
 document.getElementById('task-list').addEventListener('focusin', focusOnTask, false);
 document.getElementById('task-list').addEventListener('focusout', focusOnTask, false);
 document.getElementById('add-task').addEventListener('keypress', addTaskToList, false);
+document.getElementById('clear').addEventListener('click', clearList, false);

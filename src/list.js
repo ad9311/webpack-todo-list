@@ -23,6 +23,16 @@ class List {
 
   removeTaskFromList(index) {
     this.list = this.list.filter((task) => task.index !== Number(index));
+    for (let i = 0; i < this.list.length; i += 1) {
+      this.list[i].index = i;
+    }
+  }
+
+  removeCompletedTasks() {
+    this.list = this.list.filter((task) => task.completed !== true);
+    for (let i = 0; i < this.list.length; i += 1) {
+      this.list[i].index = i;
+    }
   }
 }
 

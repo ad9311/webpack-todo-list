@@ -1,38 +1,52 @@
 import './style.css';
 import list from './list.js';
 import element from './element.js';
+import manager from './manager.js';
 
-list.addNewTask('Walk dog');
-list.addNewTask('Clean kitchen');
-list.addNewTask('Pay bills');
-list.addNewTask('Water plants');
-list.addNewTask('Buy food');
-
-const updateLocalStorage = () => {
-  localStorage.setItem('list', JSON.stringify(list.list));
-};
-
-const renderList = () => {
-  if (localStorage.getItem('list')) {
-    list.list = JSON.parse(localStorage.getItem('list'));
-  }
-  for (let i = 0; i < list.list.length; i += 1) {
-    const ul = document.getElementById('task-list');
-    ul.appendChild(element.createListTask(list.list[i]));
-  }
-  updateLocalStorage();
-};
-
-const updateTask = (e) => {
-  if (e.target !== e.currentTarget) {
-    const index = e.target.id.replace(/^\D+/g, '');
-    const completed = e.target.checked;
-    list.setCompleted(index, completed);
-    element.updateDescription(`desc${index}`, completed);
-    updateLocalStorage();
+const updateTask = (event) => {
+  if (event.target.id.includes('task')) {
+    manager.updateTask(event, list, element);
+  } else if (event.target.id.includes('desc')) {
+    manager.updateTaskDescription(event, list);
   }
 };
 
-window.addEventListener('load', renderList(), false);
+const addTaskToList = (event) => {
+  if (event.key === 'Enter') {
+    const input = document.getElementById('add-task');
+    list.addNewTask(input.value);
+    input.value = '';
+    manager.renderNewTask(list, element);
+  }
+};
 
-document.querySelector('#task-list').addEventListener('change', updateTask, false);
+const removeTask = () => {
+  element.clearUl();
+  list.removeTaskFromList(manager.currentIndex);
+  manager.updateLocalStorage(list);
+  manager.renderStorage(list, element);
+};
+
+const focusOnTask = (event) => {
+  const index = manager.getIndex(event);
+  if (event.target === document.activeElement) {
+    manager.focusOnList(event, element);
+    document.getElementById(`bin${index}`).addEventListener('click', removeTask, false);
+  } else {
+    manager.unfocusOnList(event, element);
+  }
+};
+
+const clearList = () => {
+  element.clearUl();
+  list.removeCompletedTasks();
+  manager.updateLocalStorage(list);
+  manager.renderStorage(list, element);
+};
+
+window.addEventListener('load', manager.renderStorage(list, element), false);
+document.getElementById('task-list').addEventListener('change', updateTask, false);
+document.getElementById('task-list').addEventListener('focusin', focusOnTask, false);
+document.getElementById('task-list').addEventListener('focusout', focusOnTask, false);
+document.getElementById('add-task').addEventListener('keypress', addTaskToList, false);
+document.getElementById('clear').addEventListener('click', clearList, false);

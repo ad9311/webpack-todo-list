@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     import: './src/list.js',
     import: './src/element.js',
+    import: './src/manager.js',
     index: './src/index.js',
   },
   output: {

@@ -8,7 +8,7 @@ class Element {
 
   setUpElements() {
     this.li = document.createElement('li');
-    this.li.classList = 'list-row';
+    this.li.classList = 'list-row focused-task';
     this.input = document.createElement('input');
     this.input.type = 'checkbox';
     this.input.classList = 'me-2';
@@ -47,17 +47,13 @@ class Element {
   }
 
   changeListBackground(id) {
-    this.li = document.getElementById(`list${id}`);
     this.svg = document.getElementById(`svg${id}`);
-    this.li.classList = 'list-row focused-task';
     this.svg.innerHTML = this.getSVG(true, id);
   }
 
   defaultListBackground(id) {
-    this.li = document.getElementById(`list${id}`);
-    if (this.li) {
-      this.svg = document.getElementById(`svg${id}`);
-      this.li.classList = 'list-row';
+    this.svg = document.getElementById(`svg${id}`);
+    if (this.svg) {
       this.svg.innerHTML = this.getSVG(false);
     }
   }

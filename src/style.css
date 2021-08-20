@@ -1,5 +1,11 @@
 /* CSS Stylesheet */
 
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'Urbanist', sans-serif;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -34,7 +40,12 @@ input {
 }
 
 .focused-task {
-  background-color: blanchedalmond;
+  background-color: transparent;
+  transition: all 0.2s ease-out;
+}
+
+.focused-task:focus-within {
+  background-color: rgba(255, 245, 185, 0.781);
 }
 
 .clear {

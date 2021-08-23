@@ -24,6 +24,10 @@ To get a local copy up and running follow these simple example steps:
 
 - [NPM](https://github.com/ad9311/webpack-todo-list.git)
 
+### Live Version
+
+Live version available here: [webpack-todo-list](https://ad9311.github.io/webpack-todo-list/dist/index.html)
+
 ## Authors
 
 👤 **Author1**

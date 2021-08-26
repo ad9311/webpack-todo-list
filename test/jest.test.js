@@ -64,3 +64,21 @@ describe('Removes a task from the list', () => {
     expect(document.getElementById('task-list').lastChild.id).toEqual('list1');
   });
 });
+
+describe('Edits a tasks description', () => {
+  beforeAll(() => {
+    list.addNewTask('first task');
+    list.addNewTask('second task');
+    list.addNewTask('third task');
+    const event = {index: 0, value: 'new description'}
+    manager.updateTaskDescription(event, list);
+  });
+
+  test('', () => {
+    expect(list.list[0].description).toEqual('new description');
+  });
+
+  test('', () => {
+    expect(list.list[0].description).not.toEqual('first task');
+  });
+});

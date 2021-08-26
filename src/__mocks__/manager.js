@@ -23,6 +23,12 @@ class Manager {
       }
     }
   };
+
+  updateTaskDescription = (event, list) => {
+    const index = event.index;
+    list.editDescription(index, event.value);
+    this.updateLocalStorage(list);
+  };
 }
 
 const manager = new Manager();

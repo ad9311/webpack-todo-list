@@ -94,10 +94,22 @@ describe('Check a task completed status and updates it in localstorage', () => {
     expect(list.list[0].completed).toBe(true);
   });
 
-  test('', () => {
+  test('Completed flag from task should be true in localstorage', () => {
+    const completedList = manager.getItem();
+
+    expect(completedList[0].completed).toBe(true);
+  });
+
+  test('Completed flag from task should be false', () => {
     expect(list.list[0].completed).toBe(true);
     const event = { index: 0, checked: false };
     manager.updateTask(event, list, element);
     expect(list.list[0].completed).toBe(false);
+  });
+
+  test('Completed flag from task should be false in localstorage', () => {
+    const completedList = manager.getItem();
+
+    expect(completedList[0].completed).toBe(false);
   });
 });

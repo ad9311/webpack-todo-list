@@ -6,6 +6,7 @@ class Manager {
 
   updateLocalStorage = (list) => {
     localStorage.setItem('list', JSON.stringify(list.list));
+    return JSON.parse(localStorage.getItem('list'));
   };
 
   renderStorage = (list, element) => {

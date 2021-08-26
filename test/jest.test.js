@@ -40,6 +40,10 @@ describe('Removes a task from the list', () => {
     expect(list.list[0].description).toEqual('second task');
   });
 
+  test('Checks that first task is not first task', () => {
+    expect(list.list[0].description).not.toEqual('first task');
+  });
+
   test('Checks for the local storage length', () => {
     expect(JSON.parse(localStorage.getItem('list'))).toHaveLength(2);
   });

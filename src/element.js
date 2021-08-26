@@ -44,6 +44,7 @@ class Element {
     } else {
       this.label.classList = 'flex-grow-1';
     }
+    return this.label.classList;
   }
 
   changeListBackground(id) {
@@ -60,7 +61,7 @@ class Element {
 
   clearUl = () => {
     document.getElementById('task-list').innerHTML = '';
-  }
+  };
 }
 
 const element = new Element();

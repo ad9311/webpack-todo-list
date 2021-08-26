@@ -2,17 +2,17 @@ class Manager {
   constructor() {
     this.localstorage = [];
   }
+
   getItem() {
     return this.localstorage;
   }
+
   setItem(list) {
     this.localstorage = list.list;
     return this.localstorage;
   }
 
-  updateLocalStorage = (list) => {
-    return this.setItem(list);
-  };
+  updateLocalStorage = (list) => this.setItem(list);
 
   renderStorage = (list, element) => {
     if (this.localstorage.length > 0) {

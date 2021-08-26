@@ -1,10 +1,11 @@
 /**
  * @jest-environment jsdom
  */
-jest.mock('../src/manager.js');
 import element from '../src/element.js';
 import list from '../src/list.js';
 import manager from '../src/manager.js';
+
+jest.mock('../src/manager.js');
 
 beforeAll(() => {
   document.body.innerHTML = '<ul id="task-list"></ul>';

@@ -23,10 +23,17 @@ To get a local copy up and running follow these simple example steps:
 ### Prerequisites
 
 - [NPM](https://github.com/ad9311/webpack-todo-list.git)
+- [Yarn](https://yarnpkg.com/getting-started/install) `npm install -g yarn`
 
 ### Live Version
 
 Live version available here: [webpack-todo-list](https://ad9311.github.io/webpack-todo-list/dist/index.html)
+
+### Testing
+
+This project uses [Jest](https://jestjs.io/) for testing. To install jest run `npm install -g jest`
+
+To run the tests, use `npm test` command.
 
 ## Authors
 

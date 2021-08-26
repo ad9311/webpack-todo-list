@@ -21,7 +21,7 @@ describe('Adds a task to the list', () => {
   });
 
   test('List should not be null', () => {
-    expect(list.list).not.toBeNull;
+    expect(list.list.length).not.toBe(0);
   });
 
   test('Checks for the local storage length', () => {
@@ -55,8 +55,8 @@ describe('Removes a task from the list', () => {
   test('Checks for local storage to be empty', () => {
     list.removeTaskFromList(0);
     list.removeTaskFromList(0);
-
-    expect(JSON.parse(localStorage.getItem('list'))).toBeNull;
+    manager.updateLocalStorage(list);
+    expect(JSON.parse(localStorage.getItem('list'))).toHaveLength(0);
   });
 
   test('Checks presence of a li in the document', () => {

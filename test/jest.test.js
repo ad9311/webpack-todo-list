@@ -15,9 +15,13 @@ beforeAll(() => {
   manager.renderStorage(list, element);
 });
 
-describe('Ads a task to the list', () => {
+describe('Adds a task to the list', () => {
   test('Checks for first added task', () => {
     expect(list.list[0].description).toEqual('first task');
+  });
+
+  test('List should not be null', () => {
+    expect(list.list).not.toBeNull;
   });
 
   test('Checks for the local storage length', () => {

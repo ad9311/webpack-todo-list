@@ -35,13 +35,20 @@ describe('Removes a task from the list', () => {
     manager.updateLocalStorage(list);
     manager.renderStorage(list, element);
   });
-  
+
   test('Checks for first added task', () => {
     expect(list.list[0].description).toEqual('second task');
   });
 
   test('Checks for the local storage length', () => {
     expect(JSON.parse(localStorage.getItem('list'))).toHaveLength(2);
+  });
+
+  test('Checks for local storage to be empty', () => {
+    list.removeTaskFromList(0);
+    list.removeTaskFromList(0);
+
+    expect(JSON.parse(localStorage.getItem('list'))).toBeNull;
   });
 
   test('Checks presence of a li in the document', () => {

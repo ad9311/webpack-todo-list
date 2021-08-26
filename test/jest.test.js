@@ -70,7 +70,25 @@ describe('Edits a tasks description', () => {
     list.addNewTask('first task');
     list.addNewTask('second task');
     list.addNewTask('third task');
-    const event = {index: 0, value: 'new description'}
+    const event = { index: 0, value: 'new description' };
+    manager.updateTaskDescription(event, list);
+  });
+
+  test('', () => {
+    expect(list.list[0].description).toEqual('new description');
+  });
+
+  test('', () => {
+    expect(list.list[0].description).not.toEqual('first task');
+  });
+});
+
+describe('Check a task completed status and updates it in localstorage', () => {
+  beforeAll(() => {
+    list.addNewTask('first task');
+    list.addNewTask('second task');
+    list.addNewTask('third task');
+    const event = { index: 0, value: 'new description' };
     manager.updateTaskDescription(event, list);
   });
 

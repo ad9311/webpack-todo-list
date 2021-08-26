@@ -109,7 +109,15 @@ describe('Check a task completed status and updates it in localstorage', () => {
 
   test('Completed flag from task should be false in localstorage', () => {
     const completedList = manager.getItem();
-
     expect(completedList[0].completed).toBe(false);
+  });
+
+  test('Check crossOutDescription add to DOM', () => {
+    const event = { index: 0, checked: true };
+    element.label = document.getElementById(`desc${event.index}`);
+
+    expect(
+      element.crossOutDescription(`desc${event.index}`, event.checked)
+    ).toBe(element.label.classList);
   });
 });

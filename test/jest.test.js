@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-
+jest.mock('../src/manager.js');
 import element from '../src/element.js';
 import list from '../src/list.js';
 import manager from '../src/manager.js';
@@ -25,7 +25,7 @@ describe('Adds a task to the list', () => {
   });
 
   test('Checks for the local storage length', () => {
-    expect(JSON.parse(localStorage.getItem('list'))).toHaveLength(3);
+    expect(manager.getItem()).toHaveLength(3);
   });
 
   test('Checks presence of a li in the document', () => {
@@ -49,14 +49,14 @@ describe('Removes a task from the list', () => {
   });
 
   test('Checks for the local storage length', () => {
-    expect(JSON.parse(localStorage.getItem('list'))).toHaveLength(2);
+    expect(manager.getItem()).toHaveLength(2);
   });
 
   test('Checks for local storage to be empty', () => {
     list.removeTaskFromList(0);
     list.removeTaskFromList(0);
     manager.updateLocalStorage(list);
-    expect(JSON.parse(localStorage.getItem('list'))).toHaveLength(0);
+    expect(manager.getItem()).toHaveLength(0);
   });
 
   test('Checks presence of a li in the document', () => {

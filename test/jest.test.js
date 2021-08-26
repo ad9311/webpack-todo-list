@@ -117,7 +117,34 @@ describe('Check a task completed status and updates it in localstorage', () => {
     element.label = document.getElementById(`desc${event.index}`);
 
     expect(
-      element.crossOutDescription(`desc${event.index}`, event.checked)
+      element.crossOutDescription(`desc${event.index}`, event.checked),
     ).toBe(element.label.classList);
+  });
+});
+
+describe('Clears completed tasks', () => {
+  beforeAll(() => {
+    const event = { index: 0, checked: true };
+    manager.updateTask(event, list, element);
+    element.clearUl();
+    list.removeCompletedTasks();
+  });
+
+  test('Checks for empty ul element', () => {
+    expect(document.getElementById('task-list').innerHTML).toEqual('');
+  });
+
+  test('Checks for list array size', () => {
+    expect(list.list.length).toEqual(2);
+  });
+
+  test('Checks for local storage size', () => {
+    manager.updateLocalStorage(list);
+    expect(manager.getItem().length).toEqual(2);
+  });
+
+  test('Checks for DOM element childer count', () => {
+    manager.renderStorage(list, element);
+    expect(document.getElementById('task-list').childElementCount).toEqual(2);
   });
 });

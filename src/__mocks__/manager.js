@@ -25,13 +25,13 @@ class Manager {
   };
 
   updateTaskDescription = (event, list) => {
-    const index = event.index;
+    const { index } = event;
     list.editDescription(index, event.value);
     this.updateLocalStorage(list);
   };
 
   updateTask = (event, list, element) => {
-    const index = event.index;
+    const { index } = event;
     const completed = event.checked;
     list.setCompleted(index, completed);
     element.crossOutDescription(`desc${index}`, completed);
